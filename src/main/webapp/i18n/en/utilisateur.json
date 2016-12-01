@@ -1,0 +1,29 @@
+{
+    "tradinglearningApp": {
+        "utilisateur" : {
+            "home": {
+                "title": "Utilisateurs",
+                "createLabel": "Create a new Utilisateur",
+                "createOrEditLabel": "Create or edit a Utilisateur",
+                "search": "Search for Utilisateur"
+            },
+            "created": "A new Utilisateur is created with identifier {{ param }}",
+            "updated": "A Utilisateur is updated with identifier {{ param }}",
+            "deleted": "A Utilisateur is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Utilisateur {{ id }}?"
+            },
+            "detail": {
+                "title": "Utilisateur"
+            },
+            "credits": "Credits",
+            "user": "User",
+            "contenusPartages": "Contenus Partages",
+            "servicesRendus": "Services Rendus",
+            "servicesDemandes": "Services Demandes",
+            "servicesProposes": "Services Proposes",
+            "contenusConsultes": "Contenus Consultes",
+            "servicesRecus": "Services Recus"
+        }
+    }
+}

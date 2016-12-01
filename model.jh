@@ -1,0 +1,62 @@
+enum Categorie {
+	AGRICULTURE, ANIMALIER, BATIMENT, COMMUNICATION, CULTURE, DROIT, 
+    EDUCATION, ENERGIE, FINANCE, INDUSTRIE, INFORMATIQUE, INGENIERIE, 
+    LOGISTIQUE, MANAGEMENT, MECANIQUE, MEDIAS, MILITAIRE, MODE, NATURE, 
+    RECHERCHE, SANTE, SERVICE, SOCIAL, SPORT, TRANSPORT
+}
+
+enum Type {
+	ARTICLE, VIDEO
+}
+
+/**
+* L'entite User de Jhipster, a laquelle un Utilisateur est lié, contient déjà les informations sur :
+* - L'identifiant / mot de passe
+* - Le nom / prénom
+* - L'adresse email
+*/
+entity Utilisateur {
+    credits Integer,
+    
+}
+
+entity Contenu {
+    dateCreation LocalDate,
+    type Type,
+    categorie Categorie,
+    titre String,
+    description String,
+    donnees AnyBlob,
+    prix Integer
+}
+
+entity Prestation {
+    dateDebutLivraison ZonedDateTime,
+    dateFinLivraison ZonedDateTime,
+    categorie Categorie,
+    titre String,
+    description String,
+    nbBeneficiairesMax Integer,
+    prix Integer,
+    lieu String,
+    demande Boolean,
+    effectue Boolean
+}
+
+relationship OneToOne {
+    Utilisateur{user} to User
+}
+
+relationship OneToMany {
+    Utilisateur{contenusPartages} to Contenu{createur},
+    Utilisateur{servicesRendus} to Prestation{auteur},
+    Utilisateur{servicesDemandes} to Prestation{demandeur},
+    Utilisateur{servicesProposes} to Prestation{offreur}
+}
+
+relationship ManyToMany {
+    Utilisateur{contenusConsultes} to Contenu{utilisateursConsultant},
+    Utilisateur{servicesRecus} to Prestation{beneficiaires}
+}
+
+service all with serviceClass

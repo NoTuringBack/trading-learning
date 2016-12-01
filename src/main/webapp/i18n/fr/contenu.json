@@ -1,0 +1,30 @@
+{
+    "tradinglearningApp": {
+        "contenu" : {
+            "home": {
+                "title": "Contenus",
+                "createLabel": "Créer un nouveau Contenu",
+                "createOrEditLabel": "Créer ou éditer un Contenu",
+                "search": "Recherche pour Contenu"
+            },
+            "created": "Un nouveau Contenu a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Contenu avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Contenu avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Contenu {{ id }} ?"
+            },
+            "detail": {
+                "title": "Contenu"
+            },
+            "dateCreation": "Date Creation",
+            "type": "Type",
+            "categorie": "Categorie",
+            "titre": "Titre",
+            "description": "Description",
+            "donnees": "Donnees",
+            "prix": "Prix",
+            "createur": "Createur",
+            "utilisateursConsultant": "Utilisateurs Consultant"
+        }
+    }
+}

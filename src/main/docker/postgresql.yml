@@ -1,0 +1,12 @@
+version: '2'
+services:
+    tradinglearning-postgresql:
+        container_name: tradinglearning-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/tradinglearning/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=tradinglearning
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

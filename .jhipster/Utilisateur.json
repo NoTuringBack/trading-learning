@@ -1,0 +1,65 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "utilisateur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contenusPartages",
+            "otherEntityName": "contenu",
+            "otherEntityRelationshipName": "createur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "servicesRendus",
+            "otherEntityName": "prestation",
+            "otherEntityRelationshipName": "auteur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "servicesDemandes",
+            "otherEntityName": "prestation",
+            "otherEntityRelationshipName": "demandeur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "servicesProposes",
+            "otherEntityName": "prestation",
+            "otherEntityRelationshipName": "offreur"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "utilisateursConsultant",
+            "relationshipName": "contenusConsultes",
+            "otherEntityName": "contenu",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "beneficiaires",
+            "relationshipName": "servicesRecus",
+            "otherEntityName": "prestation",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "credits",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161201231006",
+    "javadoc": "L'entite User de Jhipster, a laquelle un Utilisateur est lié, contient déjà les informations sur :- L'identifiant / mot de passe- Le nom / prénom- L'adresse email",
+    "entityTableName": "utilisateur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass"
+}

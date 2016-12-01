@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span data-translate="tradinglearningApp.contenu.detail.title">Contenu</span> {{vm.contenu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="tradinglearningApp.contenu.dateCreation">Date Creation</span></dt>
+        <dd>
+            <span>{{vm.contenu.dateCreation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.type">Type</span></dt>
+        <dd>
+            <span data-translate="{{'tradinglearningApp.Type.' + vm.contenu.type}}">{{vm.contenu.type}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.categorie">Categorie</span></dt>
+        <dd>
+            <span data-translate="{{'tradinglearningApp.Categorie.' + vm.contenu.categorie}}">{{vm.contenu.categorie}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.titre">Titre</span></dt>
+        <dd>
+            <span>{{vm.contenu.titre}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.description">Description</span></dt>
+        <dd>
+            <span>{{vm.contenu.description}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.donnees">Donnees</span></dt>
+        <dd>
+            <div ng-if="vm.contenu.donnees">
+                <a ng-click="vm.openFile(vm.contenu.donneesContentType, vm.contenu.donnees)" data-translate="entity.action.open">open</a>
+                {{vm.contenu.donneesContentType}}, {{vm.byteSize(vm.contenu.donnees)}}
+            </div>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.prix">Prix</span></dt>
+        <dd>
+            <span>{{vm.contenu.prix}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.contenu.createur">Createur</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.contenu.createur.id})">{{vm.contenu.createur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="contenu-detail.edit({id:vm.contenu.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,78 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "auteur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "demandeur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "offreur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "beneficiaires",
+            "otherEntityName": "utilisateur",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "servicesRecus"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebutLivraison",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateFinLivraison",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "categorie",
+            "fieldType": "Categorie",
+            "fieldValues": "AGRICULTURE,ANIMALIER,BATIMENT,COMMUNICATION,CULTURE,DROIT,EDUCATION,ENERGIE,FINANCE,INDUSTRIE,INFORMATIQUE,INGENIERIE,LOGISTIQUE,MANAGEMENT,MECANIQUE,MEDIAS,MILITAIRE,MODE,NATURE,RECHERCHE,SANTE,SERVICE,SOCIAL,SPORT,TRANSPORT"
+        },
+        {
+            "fieldName": "titre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nbBeneficiairesMax",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "prix",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "lieu",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "demande",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "effectue",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20161201231008",
+    "entityTableName": "prestation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass"
+}

@@ -1,0 +1,136 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPrestationLabel" data-translate="tradinglearningApp.prestation.home.createOrEditLabel">Create or edit a Prestation</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.prestation.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.prestation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.dateDebutLivraison" for="field_dateDebutLivraison">Date Debut Livraison</label>
+                <div class="input-group">
+                    <input id="field_dateDebutLivraison" type="text" class="form-control" name="dateDebutLivraison" datetime-picker="{{dateformat}}" ng-model="vm.prestation.dateDebutLivraison" is-open="vm.datePickerOpenStatus.dateDebutLivraison"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.dateFinLivraison" for="field_dateFinLivraison">Date Fin Livraison</label>
+                <div class="input-group">
+                    <input id="field_dateFinLivraison" type="text" class="form-control" name="dateFinLivraison" datetime-picker="{{dateformat}}" ng-model="vm.prestation.dateFinLivraison" is-open="vm.datePickerOpenStatus.dateFinLivraison"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.categorie" for="field_categorie">Categorie</label>
+            <select class="form-control" name="categorie" ng-model="vm.prestation.categorie" id="field_categorie">
+                <option value="AGRICULTURE" data-translate="tradinglearningApp.Categorie.AGRICULTURE">AGRICULTURE</option>
+                <option value="ANIMALIER" data-translate="tradinglearningApp.Categorie.ANIMALIER">ANIMALIER</option>
+                <option value="BATIMENT" data-translate="tradinglearningApp.Categorie.BATIMENT">BATIMENT</option>
+                <option value="COMMUNICATION" data-translate="tradinglearningApp.Categorie.COMMUNICATION">COMMUNICATION</option>
+                <option value="CULTURE" data-translate="tradinglearningApp.Categorie.CULTURE">CULTURE</option>
+                <option value="DROIT" data-translate="tradinglearningApp.Categorie.DROIT">DROIT</option>
+                <option value="EDUCATION" data-translate="tradinglearningApp.Categorie.EDUCATION">EDUCATION</option>
+                <option value="ENERGIE" data-translate="tradinglearningApp.Categorie.ENERGIE">ENERGIE</option>
+                <option value="FINANCE" data-translate="tradinglearningApp.Categorie.FINANCE">FINANCE</option>
+                <option value="INDUSTRIE" data-translate="tradinglearningApp.Categorie.INDUSTRIE">INDUSTRIE</option>
+                <option value="INFORMATIQUE" data-translate="tradinglearningApp.Categorie.INFORMATIQUE">INFORMATIQUE</option>
+                <option value="INGENIERIE" data-translate="tradinglearningApp.Categorie.INGENIERIE">INGENIERIE</option>
+                <option value="LOGISTIQUE" data-translate="tradinglearningApp.Categorie.LOGISTIQUE">LOGISTIQUE</option>
+                <option value="MANAGEMENT" data-translate="tradinglearningApp.Categorie.MANAGEMENT">MANAGEMENT</option>
+                <option value="MECANIQUE" data-translate="tradinglearningApp.Categorie.MECANIQUE">MECANIQUE</option>
+                <option value="MEDIAS" data-translate="tradinglearningApp.Categorie.MEDIAS">MEDIAS</option>
+                <option value="MILITAIRE" data-translate="tradinglearningApp.Categorie.MILITAIRE">MILITAIRE</option>
+                <option value="MODE" data-translate="tradinglearningApp.Categorie.MODE">MODE</option>
+                <option value="NATURE" data-translate="tradinglearningApp.Categorie.NATURE">NATURE</option>
+                <option value="RECHERCHE" data-translate="tradinglearningApp.Categorie.RECHERCHE">RECHERCHE</option>
+                <option value="SANTE" data-translate="tradinglearningApp.Categorie.SANTE">SANTE</option>
+                <option value="SERVICE" data-translate="tradinglearningApp.Categorie.SERVICE">SERVICE</option>
+                <option value="SOCIAL" data-translate="tradinglearningApp.Categorie.SOCIAL">SOCIAL</option>
+                <option value="SPORT" data-translate="tradinglearningApp.Categorie.SPORT">SPORT</option>
+                <option value="TRANSPORT" data-translate="tradinglearningApp.Categorie.TRANSPORT">TRANSPORT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.titre" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                    ng-model="vm.prestation.titre"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.prestation.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.nbBeneficiairesMax" for="field_nbBeneficiairesMax">Nb Beneficiaires Max</label>
+            <input type="number" class="form-control" name="nbBeneficiairesMax" id="field_nbBeneficiairesMax"
+                    ng-model="vm.prestation.nbBeneficiairesMax"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.prix" for="field_prix">Prix</label>
+            <input type="number" class="form-control" name="prix" id="field_prix"
+                    ng-model="vm.prestation.prix"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.lieu" for="field_lieu">Lieu</label>
+            <input type="text" class="form-control" name="lieu" id="field_lieu"
+                    ng-model="vm.prestation.lieu"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.demande" for="field_demande">Demande</label>
+            <input type="checkbox" class="form-control" name="demande" id="field_demande"
+                    ng-model="vm.prestation.demande"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.prestation.effectue" for="field_effectue">Effectue</label>
+            <input type="checkbox" class="form-control" name="effectue" id="field_effectue"
+                    ng-model="vm.prestation.effectue"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.prestation.auteur" for="field_auteur">Auteur</label>
+            <select class="form-control" id="field_auteur" name="auteur" ng-model="vm.prestation.auteur" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.prestation.demandeur" for="field_demandeur">Demandeur</label>
+            <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.prestation.demandeur" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.prestation.offreur" for="field_offreur">Offreur</label>
+            <select class="form-control" id="field_offreur" name="offreur" ng-model="vm.prestation.offreur" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Utilisateur.
+    -->
+    <changeSet id="20161201231006-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="utilisateur"
+                                 constraintName="fk_utilisateur_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="utilisateurs_id"
+                                 baseTableName="utilisateur_contenus_consultes"
+                                 constraintName="fk_utilisateur_contenus_consultes_utilisateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="utilisateur"/>
+        <addForeignKeyConstraint baseColumnNames="contenus_consultes_id"
+                                 baseTableName="utilisateur_contenus_consultes"
+                                 constraintName="fk_utilisateur_contenus_consultes_contenus_consultes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contenu"/>
+        
+        <addForeignKeyConstraint baseColumnNames="utilisateurs_id"
+                                 baseTableName="utilisateur_services_recus"
+                                 constraintName="fk_utilisateur_services_recus_utilisateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="utilisateur"/>
+        <addForeignKeyConstraint baseColumnNames="services_recuses_id"
+                                 baseTableName="utilisateur_services_recus"
+                                 constraintName="fk_utilisateur_services_recus_services_recuses_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prestation"/>
+        
+    </changeSet>
+</databaseChangeLog>

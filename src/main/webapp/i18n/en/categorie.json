@@ -1,0 +1,32 @@
+{
+    "tradinglearningApp": {
+        "Categorie" : {
+            "null": "",
+            "AGRICULTURE": "AGRICULTURE",
+            "ANIMALIER": "ANIMALIER",
+            "BATIMENT": "BATIMENT",
+            "COMMUNICATION": "COMMUNICATION",
+            "CULTURE": "CULTURE",
+            "DROIT": "DROIT",
+            "EDUCATION": "EDUCATION",
+            "ENERGIE": "ENERGIE",
+            "FINANCE": "FINANCE",
+            "INDUSTRIE": "INDUSTRIE",
+            "INFORMATIQUE": "INFORMATIQUE",
+            "INGENIERIE": "INGENIERIE",
+            "LOGISTIQUE": "LOGISTIQUE",
+            "MANAGEMENT": "MANAGEMENT",
+            "MECANIQUE": "MECANIQUE",
+            "MEDIAS": "MEDIAS",
+            "MILITAIRE": "MILITAIRE",
+            "MODE": "MODE",
+            "NATURE": "NATURE",
+            "RECHERCHE": "RECHERCHE",
+            "SANTE": "SANTE",
+            "SERVICE": "SERVICE",
+            "SOCIAL": "SOCIAL",
+            "SPORT": "SPORT",
+            "TRANSPORT": "TRANSPORT"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "tradinglearningApp": {
+        "prestation" : {
+            "home": {
+                "title": "Prestations",
+                "createLabel": "Create a new Prestation",
+                "createOrEditLabel": "Create or edit a Prestation",
+                "search": "Search for Prestation"
+            },
+            "created": "A new Prestation is created with identifier {{ param }}",
+            "updated": "A Prestation is updated with identifier {{ param }}",
+            "deleted": "A Prestation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prestation {{ id }}?"
+            },
+            "detail": {
+                "title": "Prestation"
+            },
+            "dateDebutLivraison": "Date Debut Livraison",
+            "dateFinLivraison": "Date Fin Livraison",
+            "categorie": "Categorie",
+            "titre": "Titre",
+            "description": "Description",
+            "nbBeneficiairesMax": "Nb Beneficiaires Max",
+            "prix": "Prix",
+            "lieu": "Lieu",
+            "demande": "Demande",
+            "effectue": "Effectue",
+            "auteur": "Auteur",
+            "demandeur": "Demandeur",
+            "offreur": "Offreur",
+            "beneficiaires": "Beneficiaires"
+        }
+    }
+}

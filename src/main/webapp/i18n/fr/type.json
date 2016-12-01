@@ -1,0 +1,9 @@
+{
+    "tradinglearningApp": {
+        "Type" : {
+            "null": "",
+            "ARTICLE": "ARTICLE",
+            "VIDEO": "VIDEO"
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns='http://www.ehcache.org/v3'
+         xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache-template name="simple">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap>100</heap>
+    </cache-template>
+
+    <cache alias="com.noturingback.tradinglearning.domain.User" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Authority" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.User.authorities" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.PersistentToken" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.User.persistentTokens" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.contenusPartages" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.servicesRenduses" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.servicesDemandes" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.servicesProposes" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.contenusConsultes" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Utilisateur.servicesRecuses" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Contenu" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Contenu.utilisateursConsultants" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Prestation" uses-template="simple"/>
+
+    <cache alias="com.noturingback.tradinglearning.domain.Prestation.beneficiaires" uses-template="simple"/>
+
+    <!-- jhipster-needle-ehcache-add-entry -->
+</config>

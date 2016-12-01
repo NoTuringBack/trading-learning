@@ -1,0 +1,119 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myContenuLabel" data-translate="tradinglearningApp.contenu.home.createOrEditLabel">Create or edit a Contenu</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.contenu.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.contenu.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.dateCreation" for="field_dateCreation">Date Creation</label>
+                <div class="input-group">
+                    <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" uib-datepicker-popup="{{dateformat}}" ng-model="vm.contenu.dateCreation" is-open="vm.datePickerOpenStatus.dateCreation"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCreation')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="vm.contenu.type" id="field_type">
+                <option value="ARTICLE" data-translate="tradinglearningApp.Type.ARTICLE">ARTICLE</option>
+                <option value="VIDEO" data-translate="tradinglearningApp.Type.VIDEO">VIDEO</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.categorie" for="field_categorie">Categorie</label>
+            <select class="form-control" name="categorie" ng-model="vm.contenu.categorie" id="field_categorie">
+                <option value="AGRICULTURE" data-translate="tradinglearningApp.Categorie.AGRICULTURE">AGRICULTURE</option>
+                <option value="ANIMALIER" data-translate="tradinglearningApp.Categorie.ANIMALIER">ANIMALIER</option>
+                <option value="BATIMENT" data-translate="tradinglearningApp.Categorie.BATIMENT">BATIMENT</option>
+                <option value="COMMUNICATION" data-translate="tradinglearningApp.Categorie.COMMUNICATION">COMMUNICATION</option>
+                <option value="CULTURE" data-translate="tradinglearningApp.Categorie.CULTURE">CULTURE</option>
+                <option value="DROIT" data-translate="tradinglearningApp.Categorie.DROIT">DROIT</option>
+                <option value="EDUCATION" data-translate="tradinglearningApp.Categorie.EDUCATION">EDUCATION</option>
+                <option value="ENERGIE" data-translate="tradinglearningApp.Categorie.ENERGIE">ENERGIE</option>
+                <option value="FINANCE" data-translate="tradinglearningApp.Categorie.FINANCE">FINANCE</option>
+                <option value="INDUSTRIE" data-translate="tradinglearningApp.Categorie.INDUSTRIE">INDUSTRIE</option>
+                <option value="INFORMATIQUE" data-translate="tradinglearningApp.Categorie.INFORMATIQUE">INFORMATIQUE</option>
+                <option value="INGENIERIE" data-translate="tradinglearningApp.Categorie.INGENIERIE">INGENIERIE</option>
+                <option value="LOGISTIQUE" data-translate="tradinglearningApp.Categorie.LOGISTIQUE">LOGISTIQUE</option>
+                <option value="MANAGEMENT" data-translate="tradinglearningApp.Categorie.MANAGEMENT">MANAGEMENT</option>
+                <option value="MECANIQUE" data-translate="tradinglearningApp.Categorie.MECANIQUE">MECANIQUE</option>
+                <option value="MEDIAS" data-translate="tradinglearningApp.Categorie.MEDIAS">MEDIAS</option>
+                <option value="MILITAIRE" data-translate="tradinglearningApp.Categorie.MILITAIRE">MILITAIRE</option>
+                <option value="MODE" data-translate="tradinglearningApp.Categorie.MODE">MODE</option>
+                <option value="NATURE" data-translate="tradinglearningApp.Categorie.NATURE">NATURE</option>
+                <option value="RECHERCHE" data-translate="tradinglearningApp.Categorie.RECHERCHE">RECHERCHE</option>
+                <option value="SANTE" data-translate="tradinglearningApp.Categorie.SANTE">SANTE</option>
+                <option value="SERVICE" data-translate="tradinglearningApp.Categorie.SERVICE">SERVICE</option>
+                <option value="SOCIAL" data-translate="tradinglearningApp.Categorie.SOCIAL">SOCIAL</option>
+                <option value="SPORT" data-translate="tradinglearningApp.Categorie.SPORT">SPORT</option>
+                <option value="TRANSPORT" data-translate="tradinglearningApp.Categorie.TRANSPORT">TRANSPORT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.titre" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                    ng-model="vm.contenu.titre"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.contenu.description"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDonnees($file, vm.contenu)">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.donnees" for="field_donnees">Donnees</label>
+            <div>
+                <div ng-if="vm.contenu.donnees" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.contenu.donneesContentType, vm.contenu.donnees)" data-translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.contenu.donneesContentType}}, {{vm.byteSize(vm.contenu.donnees)}}</span>
+                    <button type="button" ng-click="vm.contenu.donnees=null;vm.contenu.donneesContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDonnees($file, vm.contenu)" data-translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="donnees" id="field_donnees"
+                    ng-model="vm.contenu.donnees"
+                     />
+            <input type="hidden" class="form-control" name="donneesContentType" id="field_donneesContentType"
+                    ng-model="vm.contenu.donneesContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.contenu.prix" for="field_prix">Prix</label>
+            <input type="number" class="form-control" name="prix" id="field_prix"
+                    ng-model="vm.contenu.prix"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.contenu.createur" for="field_createur">Createur</label>
+            <select class="form-control" id="field_createur" name="createur" ng-model="vm.contenu.createur" ng-options="utilisateur as utilisateur.id for utilisateur in vm.utilisateurs track by utilisateur.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

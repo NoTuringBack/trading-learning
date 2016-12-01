@@ -1,0 +1,46 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUtilisateurLabel" data-translate="tradinglearningApp.utilisateur.home.createOrEditLabel">Create or edit a Utilisateur</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.utilisateur.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.utilisateur.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="tradinglearningApp.utilisateur.credits" for="field_credits">Credits</label>
+            <input type="number" class="form-control" name="credits" id="field_credits"
+                    ng-model="vm.utilisateur.credits"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.utilisateur.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.utilisateur.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.utilisateur.contenusConsultes" for="field_contenusConsultes">Contenus Consultes</label>
+            <select class="form-control" id="field_contenusConsultes" multiple name="contenusConsultes" ng-model="vm.utilisateur.contenusConsultes" ng-options="contenu as contenu.id for contenu in vm.contenus track by contenu.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="tradinglearningApp.utilisateur.servicesRecus" for="field_servicesRecus">Services Recus</label>
+            <select class="form-control" id="field_servicesRecus" multiple name="servicesRecus" ng-model="vm.utilisateur.servicesRecuses" ng-options="prestation as prestation.id for prestation in vm.prestations track by prestation.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

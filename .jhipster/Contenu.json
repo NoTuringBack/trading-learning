@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "utilisateursConsultant",
+            "otherEntityName": "utilisateur",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "contenusConsultes"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Type",
+            "fieldValues": "ARTICLE,VIDEO"
+        },
+        {
+            "fieldName": "categorie",
+            "fieldType": "Categorie",
+            "fieldValues": "AGRICULTURE,ANIMALIER,BATIMENT,COMMUNICATION,CULTURE,DROIT,EDUCATION,ENERGIE,FINANCE,INDUSTRIE,INFORMATIQUE,INGENIERIE,LOGISTIQUE,MANAGEMENT,MECANIQUE,MEDIAS,MILITAIRE,MODE,NATURE,RECHERCHE,SANTE,SERVICE,SOCIAL,SPORT,TRANSPORT"
+        },
+        {
+            "fieldName": "titre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "donnees",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "prix",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161201231007",
+    "entityTableName": "contenu",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass"
+}

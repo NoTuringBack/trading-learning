@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span data-translate="tradinglearningApp.prestation.detail.title">Prestation</span> {{vm.prestation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="tradinglearningApp.prestation.dateDebutLivraison">Date Debut Livraison</span></dt>
+        <dd>
+            <span>{{vm.prestation.dateDebutLivraison | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.dateFinLivraison">Date Fin Livraison</span></dt>
+        <dd>
+            <span>{{vm.prestation.dateFinLivraison | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.categorie">Categorie</span></dt>
+        <dd>
+            <span data-translate="{{'tradinglearningApp.Categorie.' + vm.prestation.categorie}}">{{vm.prestation.categorie}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.titre">Titre</span></dt>
+        <dd>
+            <span>{{vm.prestation.titre}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.description">Description</span></dt>
+        <dd>
+            <span>{{vm.prestation.description}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.nbBeneficiairesMax">Nb Beneficiaires Max</span></dt>
+        <dd>
+            <span>{{vm.prestation.nbBeneficiairesMax}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.prix">Prix</span></dt>
+        <dd>
+            <span>{{vm.prestation.prix}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.lieu">Lieu</span></dt>
+        <dd>
+            <span>{{vm.prestation.lieu}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.demande">Demande</span></dt>
+        <dd>
+            <span>{{vm.prestation.demande}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.effectue">Effectue</span></dt>
+        <dd>
+            <span>{{vm.prestation.effectue}}</span>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.auteur">Auteur</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.prestation.auteur.id})">{{vm.prestation.auteur.id}}</a>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.demandeur">Demandeur</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.prestation.demandeur.id})">{{vm.prestation.demandeur.id}}</a>
+        </dd>
+        <dt><span data-translate="tradinglearningApp.prestation.offreur">Offreur</span></dt>
+        <dd>
+            <a ui-sref="utilisateur-detail({id:vm.prestation.offreur.id})">{{vm.prestation.offreur.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="prestation-detail.edit({id:vm.prestation.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

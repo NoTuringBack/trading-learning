@@ -1,42 +1,47 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('tradinglearningApp')
         .factory('LoginService', LoginService);
 
-    LoginService.$inject = ['$uibModal'];
+    LoginService.$inject = ['$state', '$rootScope'];
 
-    function LoginService ($uibModal) {
+    function LoginService($state, $rootScope) {
+
+        var authenticationError = false;
         var service = {
-            open: open
-        };
-
-        var modalInstance = null;
-        var resetModal = function () {
-            modalInstance = null;
+            login: login
         };
 
         return service;
 
-        function open () {
-            if (modalInstance !== null) return;
-            modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'app/components/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'vm',
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('login');
-                        return $translate.refresh();
-                    }]
+        function login(username, password, rememberMe, vmAuthenticationError, Auth) {
+            authenticationError = vmAuthenticationError;
+
+            Auth.login({
+                username: username,
+                password: password,
+                rememberMe: rememberMe
+            }).then(function () {
+                authenticationError = false;
+                if ($state.current.name === 'register' || $state.current.name === 'activate' ||
+                    $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
+                    $state.go('home');
                 }
+
+                $rootScope.$broadcast('authenticationSuccess');
+
+                // previousState was set in the authExpiredInterceptor before being redirected to login modal.
+                // since login is succesful, go to stored previousState and clear previousState
+                if (Auth.getPreviousState()) {
+                    var previousState = Auth.getPreviousState();
+                    Auth.resetPreviousState();
+                    $state.go(previousState.name, previousState.params);
+                }
+            }).catch(function () {
+                $rootScope.$broadcast('authenticationError');
             });
-            modalInstance.result.then(
-                resetModal,
-                resetModal
-            );
         }
     }
 })();

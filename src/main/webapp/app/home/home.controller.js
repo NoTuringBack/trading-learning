@@ -5,19 +5,29 @@
         .module('tradinglearningApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$rootScope','$scope', 'Principal', 'LoginService', '$state', 'Auth'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    /* Controller of home, essentially
+    manage the authentification process*/
+    function HomeController($rootScope, $scope, Principal, LoginService, $state, Auth) {
         var vm = this;
 
+        /*login*/
+        vm.username = null;
+        vm.password = null;
+        vm.rememberMe = true;
+
+        /*authentication*/
         vm.account = null;
         vm.isAuthenticated = null;
-        vm.login = LoginService.open;
-        vm.register = register;
-        $scope.$on('authenticationSuccess', function() {
-            getAccount();
-        });
+        vm.authenticationError = false;
 
+        /*Function to authenticate*/
+        vm.register = register;
+        vm.requestResetPassword = requestResetPassword;
+        vm.login = login;
+
+        /*Authentification and account function*/
         getAccount();
 
         function getAccount() {
@@ -26,8 +36,31 @@
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
         }
-        function register () {
+
+        /*For creating a new account*/
+        function register() {
             $state.go('register');
         }
+
+        /*Call to login into the app*/
+        function login(event) {
+            LoginService.login(vm.username, vm.password, vm.rememberMe, vm.authenticationError, Auth);
+        }
+
+        /*Lost your password*/
+        function requestResetPassword () {
+            $state.go('requestReset');
+        }
+
+        /*Catch any succes or fail
+        in the authentication process*/
+        $scope.$on('authenticationSuccess', function() {
+            vm.authenticationError = false;
+            getAccount();
+        });
+
+        $scope.$on('authenticationError', function() {
+            vm.authenticationError = true;
+        });
     }
 })();

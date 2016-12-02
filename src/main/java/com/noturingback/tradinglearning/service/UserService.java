@@ -2,10 +2,13 @@ package com.noturingback.tradinglearning.service;
 
 import com.noturingback.tradinglearning.domain.Authority;
 import com.noturingback.tradinglearning.domain.User;
+import com.noturingback.tradinglearning.domain.Utilisateur;
 import com.noturingback.tradinglearning.repository.AuthorityRepository;
 import com.noturingback.tradinglearning.repository.PersistentTokenRepository;
 import com.noturingback.tradinglearning.repository.UserRepository;
+import com.noturingback.tradinglearning.repository.UtilisateurRepository;
 import com.noturingback.tradinglearning.repository.search.UserSearchRepository;
+import com.noturingback.tradinglearning.repository.search.UtilisateurSearchRepository;
 import com.noturingback.tradinglearning.security.AuthoritiesConstants;
 import com.noturingback.tradinglearning.security.SecurityUtils;
 import com.noturingback.tradinglearning.service.util.RandomUtil;
@@ -39,6 +42,12 @@ public class UserService {
 
     @Inject
     private UserSearchRepository userSearchRepository;
+
+    @Inject
+    private UtilisateurRepository utilisateurRepository;
+
+    @Inject
+    private UtilisateurSearchRepository utilisateurSearchRepository;
 
     @Inject
     private PersistentTokenRepository persistentTokenRepository;
@@ -108,6 +117,14 @@ public class UserService {
         userRepository.save(newUser);
         userSearchRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
+
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setCredits(10);
+        utilisateur.setUser(newUser);
+        utilisateurRepository.save(utilisateur);
+        utilisateurSearchRepository.save(utilisateur);
+        log.debug("Created Information for Utilisateur {}", utilisateur);
+
         return newUser;
     }
 
@@ -137,6 +154,14 @@ public class UserService {
         userRepository.save(user);
         userSearchRepository.save(user);
         log.debug("Created Information for User: {}", user);
+
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setCredits(10);
+        utilisateur.setUser(user);
+        utilisateurRepository.save(utilisateur);
+        utilisateurSearchRepository.save(utilisateur);
+        log.debug("Created Information for Utilisateur {}", utilisateur);
+
         return user;
     }
 

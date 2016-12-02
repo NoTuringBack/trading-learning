@@ -26,7 +26,13 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('register');
                     return $translate.refresh();
-                }]
+                }],
+                entity: function () {
+                    return {
+                        credits: null,
+                        id: null
+                    };
+                }
             }
         });
     }

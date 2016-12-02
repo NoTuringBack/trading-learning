@@ -1,7 +1,14 @@
 {
     "home": {
-        "title": "Bienvenue sur Trading-Learning !",
-        "subtitle": "Ceci est votre page d'accueil",
+        "title": "Votre compte en bref",
+        "connection": "Connexion",
+        "numberContentShared": "Nombre de contenus partagés : {{number}}",
+        "numberServicesProvided": "Nombre de services rendus : {{number}}",
+        "numberServicesOffered": "Nombre de services proposés : {{number}}",
+        "numberContentConsulted": "Nombre de contenus consultables : {{number}}",
+        "numberServicesReceived": "Nombre de services reçus : {{number}}",
+        "numberServicesAsked": "Nombre de services demandés : {{number}}",
+        "wallet": "TCoins : ",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },

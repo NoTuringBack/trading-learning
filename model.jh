@@ -16,8 +16,7 @@ enum Type {
 * - L'adresse email
 */
 entity Utilisateur {
-    credits Integer,
-    
+    credits Integer
 }
 
 entity Contenu {

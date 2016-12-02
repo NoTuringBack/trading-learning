@@ -5,6 +5,8 @@ import com.noturingback.tradinglearning.repository.UtilisateurRepository;
 import com.noturingback.tradinglearning.repository.search.UtilisateurSearchRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class UtilisateurService {
 
     private final Logger log = LoggerFactory.getLogger(UtilisateurService.class);
-    
+
     @Inject
     private UtilisateurRepository utilisateurRepository;
 
@@ -45,10 +47,10 @@ public class UtilisateurService {
 
     /**
      *  Get all the utilisateurs.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<Utilisateur> findAll() {
         log.debug("Request to get all Utilisateurs");
         List<Utilisateur> result = utilisateurRepository.findAllWithEagerRelationships();
@@ -62,10 +64,28 @@ public class UtilisateurService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Utilisateur findOne(Long id) {
         log.debug("Request to get Utilisateur : {}", id);
         Utilisateur utilisateur = utilisateurRepository.findOneWithEagerRelationships(id);
+        return utilisateur;
+    }
+
+    /**
+     *  Get current utilisateur.
+     *
+     *  @return the entity
+     */
+    @Transactional(readOnly = true)
+    public Utilisateur findCurrent() {
+        log.debug("Request to get current Utilisateur");
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userLogin = user.getUsername(); //get logged in username
+        log.debug("userLogin : " + userLogin);
+
+        Utilisateur utilisateur = utilisateurRepository.findByUser_Login(userLogin);
+        log.debug("utilisateur : " + utilisateur.getCredits());
         return utilisateur;
     }
 

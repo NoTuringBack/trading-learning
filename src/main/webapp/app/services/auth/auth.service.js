@@ -68,9 +68,7 @@
                         storePreviousState($rootScope.toState.name, $rootScope.toStateParams);
 
                         // now, send them to the signin state so they can log in
-                        $state.go('accessdenied').then(function() {
-                            LoginService.open();
-                        });
+                        $state.go('accessdenied');
                     }
                 }
             }
@@ -124,12 +122,11 @@
                 });
                 return cb();
             }
-
             return deferred.promise;
         }
 
-
         function logout () {
+            $rootScope.$broadcast('logout');
             AuthServerProvider.logout();
             Principal.authenticate(null);
         }

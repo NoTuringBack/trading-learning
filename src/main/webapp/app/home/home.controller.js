@@ -5,11 +5,11 @@
         .module('tradinglearningApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$rootScope','$scope', 'Principal', 'LoginService', '$state', 'Auth'];
+    HomeController.$inject = ['$rootScope','$scope', '$log', 'Utilisateur', 'Principal', 'LoginService', '$state', 'Auth'];
 
     /* Controller of home, essentially
     manage the authentification process*/
-    function HomeController($rootScope, $scope, Principal, LoginService, $state, Auth) {
+    function HomeController($rootScope, $scope, $log, Utilisateur, Principal, LoginService, $state, Auth) {
         var vm = this;
 
         /*login*/
@@ -22,12 +22,26 @@
         vm.isAuthenticated = null;
         vm.authenticationError = false;
 
+        vm.utilisateur = null;
+
+        loadAll();
+
+        function loadAll() {
+            if (vm.isAuthenticated) {
+                $log.info("Authenticated, getting the current user");
+                Utilisateur.currentUtilisateur().get(function (result) {
+                    vm.utilisateur = result;
+                    $log.info(result);
+                });
+            }
+        }
+
         /*Function to authenticate*/
         vm.register = register;
         vm.requestResetPassword = requestResetPassword;
         vm.login = login;
 
-        /*Authentification and account function*/
+        /* Authentification and account function */
         getAccount();
 
         function getAccount() {

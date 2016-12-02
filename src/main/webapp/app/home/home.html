@@ -1,8 +1,19 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1 jumbotron text-center">
-            <h1 translate="home.title">Welcome to Training Learning !</h1>
-            <p class="lead" translate="home.subtitle"></p>
+        <div class="col-md-10 col-md-offset-1 jumbotron" ng-switch="vm.isAuthenticated()">
+            <h1 ng-switch-when="true" class="text-center" translate="home.title"></h1>
+            <h1 ng-switch-when="false" class="text-center" translate="home.connection"></h1>
+            <br />
+            <div ng-switch-when="true" class="text-center ">
+                <span class="lead">
+                    <span class="glyphicon glyphicon-certificate" style="color: darkgoldenrod"></span> {{vm.utilisateur.credits}}
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <span></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">

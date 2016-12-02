@@ -1,7 +1,14 @@
 {
     "home": {
-        "title": "Welcome to Trading-Learning !",
-        "subtitle": "This is your homepage",
+        "title": "Your account in a nutshell",
+        "connection": "Connection",
+        "numberContentShared": "Number of content shared : {{number}}",
+        "numberServicesProvided": "Number of services provided : {{number}}",
+        "numberServicesOffered": "Number of services offered : {{number}}",
+        "numberContentConsulted": "Number of content consulted : {{number}}",
+        "numberServicesReceived": "Number of services received : {{number}}",
+        "numberServicesAsked": "Number of services asked : {{number}}",
+        "wallet": "TCoins : ",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },

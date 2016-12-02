@@ -18,7 +18,7 @@
         loadAll();
 
         function loadAll() {
-            Utilisateur.query(function(result) {
+            Utilisateur.utilisateur().query(function(result) {
                 vm.utilisateurs = result;
                 vm.searchQuery = null;
             });

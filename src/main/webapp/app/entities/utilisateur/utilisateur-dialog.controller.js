@@ -28,9 +28,9 @@
         function save () {
             vm.isSaving = true;
             if (vm.utilisateur.id !== null) {
-                Utilisateur.update(vm.utilisateur, onSaveSuccess, onSaveError);
+                Utilisateur.utilisateur().update(vm.utilisateur, onSaveSuccess, onSaveError);
             } else {
-                Utilisateur.save(vm.utilisateur, onSaveSuccess, onSaveError);
+                Utilisateur.utilisateur().save(vm.utilisateur, onSaveSuccess, onSaveError);
             }
         }
 

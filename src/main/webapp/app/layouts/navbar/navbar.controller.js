@@ -5,9 +5,9 @@
         .module('tradinglearningApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$rootScope', '$state', 'Auth', 'Principal', 'ProfileService'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($rootScope, $state, Auth, Principal, ProfileService) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -15,24 +15,18 @@
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
-            vm.swaggerEnabled = response.swaggerEnabled;
+            vm.swaggerDisabled = response.swaggerDisabled;
         });
 
-        vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
 
-        function login() {
-            collapseNavbar();
-            LoginService.open();
-        }
-
         function logout() {
             collapseNavbar();
             Auth.logout();
-            $state.go('home');
+            $state.go("home");
         }
 
         function toggleNavbar() {

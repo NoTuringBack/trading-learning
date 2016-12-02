@@ -6,7 +6,6 @@ import com.noturingback.tradinglearning.service.UtilisateurService;
 import com.noturingback.tradinglearning.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +15,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing Utilisateur.
@@ -29,7 +24,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class UtilisateurResource {
 
     private final Logger log = LoggerFactory.getLogger(UtilisateurResource.class);
-        
+
     @Inject
     private UtilisateurService utilisateurService;
 
@@ -106,6 +101,23 @@ public class UtilisateurResource {
     }
 
     /**
+     * GET  /utilisateurs/current : get the current utilisateur.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the utilisateur, or with status 404 (Not Found)
+     */
+    @GetMapping("/utilisateurs/current")
+    @Timed
+    public ResponseEntity<Utilisateur> getCurrentUtilisateur() {
+        log.debug("REST request to get current Utilisateur");
+        Utilisateur utilisateur = utilisateurService.findCurrent();
+        return Optional.ofNullable(utilisateur)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
      * DELETE  /utilisateurs/:id : delete the "id" utilisateur.
      *
      * @param id the id of the utilisateur to delete
@@ -123,7 +135,7 @@ public class UtilisateurResource {
      * SEARCH  /_search/utilisateurs?query=:query : search for the utilisateur corresponding
      * to the query.
      *
-     * @param query the query of the utilisateur search 
+     * @param query the query of the utilisateur search
      * @return the result of the search
      */
     @GetMapping("/_search/utilisateurs")

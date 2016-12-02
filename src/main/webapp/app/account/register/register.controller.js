@@ -6,18 +6,19 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService'];
+    RegisterController.$inject = ['$translate', '$timeout', '$log', 'Auth', 'LoginService', 'entity', 'Utilisateur'];
 
-    function RegisterController ($translate, $timeout, Auth, LoginService) {
+    function RegisterController ($translate, $timeout, $log, Auth, LoginService, entity, Utilisateur) {
         var vm = this;
 
         vm.doNotMatch = null;
         vm.error = null;
         vm.errorUserExists = null;
-        vm.login = LoginService.open;
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
+
+        //vm.utilisateur = entity;
 
         $timeout(function (){angular.element('#login').focus();});
 
@@ -44,6 +45,14 @@
                     }
                 });
             }
+        }
+
+        function onSaveSuccess (result) {
+            $log.info("Utilisateur enregistré");
+        }
+
+        function onSaveError () {
+            $log.info("Erreur");
         }
     }
 })();
